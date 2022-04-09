@@ -1,0 +1,69 @@
+# 端口设置
+server:
+  port: 9527
+
+spring:
+  # mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/erp?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+
+  # redis配置
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: 10000
+        min-idle: 0
+        max-idle: 8
+    timeout: 5000
+  # 身份验证
+  security:
+    user:
+      name: user1
+      password: password1
+  servlet:
+    multipart:
+      max-file-size: 64000MB
+      max-request-size: -1
+  # 邮件设置
+  mail:
+    host: smtp.qq.com
+    protocol: smtp
+    default-encoding: UTF-8
+#    password: yk6912013
+    #  授权码
+    password: sflnvggljsnrdjgf
+    username: 2621069625@qq.com
+    port: 465
+    properties:
+      mail:
+        smtp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+            port: 465
+            fallback: false
+        debug: true
+
+# mybatis配置
+mybatis:
+  mapper-locations: classpath:com/yk/mapper/*Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# 日志配置
+logging:
+  level:
+    root: warn
+    com:
+      yk:
+        mapper: info
+    org:
+      springframework:
+        security: DEBUG
